@@ -84,9 +84,9 @@ fn main() {
 
 // TODO. Implement `wc`
 // Support the following flows:
-// 1. wc -l - count lines in file
-// 2. wc -c - count characters in file
-// 3. wc -w - count words in file
+// 1. wc -l - count lines in file  V
+// 2. wc -c - count characters in file V
+// 3. wc -w - count words in file V
 // 4. support combos of flags
 // 5. support new flag, -f - frequency. this flag is mux to l,c,w
 // 6. bonus - make -f utilize all CPU cores for speed, add benchmarking to compare

@@ -13,6 +13,10 @@ fn test_wc_compatibility() {
         vec!["-c", "LICENSE"],
         vec!["LICENSE", "CONTRIBUTING.md"],
         vec!["LICENSE"],
+        vec!["-lw", "LICENSE"],
+        vec!["-lc", "LICENSE"],
+        vec!["-wc", "LICENSE"],
+        vec!["-lwc", "LICENSE"],
     ];
 
     for wc_args in wc_compat_test_cases {
