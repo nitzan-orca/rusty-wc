@@ -1,7 +1,7 @@
 mod testing_resources;
 
 use clap::Parser;
-use std::{env::args_os, fs};
+use std::fs;
 
 /// wc impl in rust
 #[derive(Parser, Debug)]
@@ -25,9 +25,9 @@ struct Args {
 
 fn main() {
     let parsed_args = Args::parse();
-    let mut should_words: bool = false;
-    let mut should_lines: bool = false;
-    let mut should_characters: bool = false;
+    let should_words: bool;
+    let should_lines: bool;
+    let should_characters: bool;
     if !parsed_args.should_characters && !parsed_args.should_lines && !parsed_args.should_words {
         // Compat with wc behavior, no flags passed means all these should be on.
         should_characters = true;

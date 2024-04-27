@@ -10,7 +10,7 @@ this CLI. The CLI we're basing off of is Good ol' `wc`.
 The feature you'll implement is adding a `-f` flag - which will count frequency of
 words in the input files, and print the top 10 most frequent words.
 
-### Bonus points!
+### Bonus points
 
 Implement it with parallelism, and add a benchmark to compare the performance
 of the parallel implementation with the sequential one. Utilize max available
@@ -33,3 +33,9 @@ In VSCode, install the
 extension, and make sure to install a debugger as well.
 
 For JetBrains IDEs, try [RustRover](https://www.jetbrains.com/rust/).
+
+## Testing
+
+```sh
+cargo test
+```
