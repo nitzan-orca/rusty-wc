@@ -3,6 +3,8 @@ use std::process::Command;
 
 /// Just make sure that rusty_wc behaves the same as wc.
 #[test]
+// Skip if not on OSX
+#[cfg(target_os = "macos")]
 fn test_wc_compatibility() {
     let wc_compat_test_cases: Vec<Vec<&str>> = vec![
         vec!["-l", "LICENSE", "CONTRIBUTING.md"],
