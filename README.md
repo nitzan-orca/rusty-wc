@@ -1,6 +1,13 @@
-# rusty-wc
+# rusty-wc 🚾
 
-I like rusty spoons!
+Learn Rust hands-on by adding a feature to a rusty `wc` clone.
+
+> This exercise was developed for Orca Security's Rust workshop, but it's open
+> source under [the license](./LICENSE). Feel free to use it for your own
+> workshops or personal learning, and contribute back if you find any issues or
+> improvements!
+
+![Rusty Orca](./docs/rusty-orca_256x256.webp)
 
 ## What's the exercise?
 
@@ -116,6 +123,9 @@ still in preview at the time of writing, but it should be fully released by Sep
 2024.
 
 ## Testing
+
+There are two testing suites: unit tests in the `main.rs` file and integration
+tests in the `tests/` directory. To run the tests, use:
 
 ```sh
 cargo test -- --nocapture
