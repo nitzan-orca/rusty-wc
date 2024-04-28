@@ -9,6 +9,20 @@ Learn Rust hands-on by adding a feature to a rusty `wc` clone.
 
 ![Rusty Orca](./docs/rusty-orca_256x256.webp)
 
+* [What's the exercise?](#whats-the-exercise)
+  * [Your task](#your-task)
+    * [Step 0 // Get familiar with the code and environment](#step-0--get-familiar-with-the-code-and-environment)
+    * [Step 1 // Add a new feature](#step-1--add-a-new-feature)
+  * [Bonus points](#bonus-points)
+    * [Step 2 // Add tests to your feature](#step-2--add-tests-to-your-feature)
+    * [Step 3 // Benchmarking and optimization](#step-3--benchmarking-and-optimization)
+* [Installation](#installation)
+  * [IDEs](#ides)
+    * [VSCode](#vscode)
+    * [Vim](#vim)
+    * [JetBrains IDEs](#jetbrains-ides)
+* [Testing](#testing)
+
 ## What's the exercise?
 
 Learn some rust by practicing a "real-life" example of adding a feature to
