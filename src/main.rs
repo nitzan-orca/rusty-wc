@@ -7,19 +7,21 @@ use std::fs;
 #[derive(Parser, Debug)]
 #[command(version, about, long_about = None)]
 struct Args {
-    /// Should count lines?
+    /// Print the number of lines in each input file
     #[arg(short = 'l')]
     should_lines: bool,
 
-    /// Should count characters?
+    /// Print the number of bytes in each input file
     #[arg(short = 'c')]
     should_characters: bool,
 
-    /// Should count words?
+    /// Print the number of words in each input file
     #[arg(short = 'w')]
     should_words: bool,
 
-    /// Paths (plural!) to files we want to wc
+    /// Paths to input files we want to `wc`. If more than one input file is
+    /// specified, a line of cumulative counts for all the files is displayed
+    /// on a separate line after the output for the last file.
     paths: Vec<String>,
 }
 
@@ -87,22 +89,12 @@ fn main() {
     }
 }
 
-// TODO. Implement `wc`
-// Support the following flows:
-// 1. wc -l - count lines in file  V
-// 2. wc -c - count characters in file V
-// 3. wc -w - count words in file V
-// 4. support combos of flags V
-// 5. support new flag, -f - frequency. this flag is mux to l,c,w
-// 6. bonus - make -f utilize all CPU cores for speed, add benchmarking to compare
-// single- to multi-threaded solutions.
-
 fn count_lines_in_content(content: &str) -> usize {
     // My initial implementation
     // content.split('\n').fold(0, |lines: u64, _x| lines + 1)
     // Easier way, still wrong
     // content.split('\n').count()
-    // Apparently, wc counts \n in file, not lines
+    // Apparently, wc counts `\n` in content, not lines
     content.match_indices('\n').count()
 }
 
