@@ -28,6 +28,7 @@ fn main() {
     let should_words: bool;
     let should_lines: bool;
     let should_characters: bool;
+    let mut should_exit_with_err: bool = false;
     if !parsed_args.should_characters && !parsed_args.should_lines && !parsed_args.should_words {
         // Compat with wc behavior, no flags passed means all these should be on.
         should_characters = true;
@@ -46,7 +47,8 @@ fn main() {
         let file_contents = match fs::read_to_string(path.clone()) {
             Ok(x) => x,
             Err(e) => {
-                print!("wc: {}: {}", path, e.to_string());
+                eprint!("wc: {}: {}", path, e.to_string());
+                should_exit_with_err = true;
                 continue;
             }
         };
@@ -79,6 +81,9 @@ fn main() {
             print!("{:>8}", total_characters);
         }
         println!(" total")
+    }
+    if should_exit_with_err {
+        std::process::exit(0x00000001);
     }
 }
 

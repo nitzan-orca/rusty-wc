@@ -17,6 +17,7 @@ fn test_wc_compatibility() {
         vec!["-lc", "LICENSE"],
         vec!["-wc", "LICENSE"],
         vec!["-lwc", "LICENSE"],
+        vec!["thisfiledoesntexist"],
     ];
 
     for wc_args in wc_compat_test_cases {
@@ -28,6 +29,21 @@ fn test_wc_compatibility() {
 
         let mut cmd = TestingCommand::cargo_bin("rusty-wc").unwrap();
         let rusty_wc_output = cmd.args(wc_args).output().expect("Failed to run rusty-wc");
-        assert_eq!(legit_wc_output, rusty_wc_output);
+        if legit_wc_output.status.success() {
+            assert_eq!(legit_wc_output, rusty_wc_output);
+        } else {
+            // On failure, we don't care about exact match. Just similar exit status and error message existence.
+            assert_eq!(legit_wc_output.status, rusty_wc_output.status);
+            if legit_wc_output.stderr.len() > 0 {
+                assert!(rusty_wc_output.stderr.len() > 0);
+                // We don't want to assert on the errors, but just for sanity, let's print them.
+                // To see this, run `cargo test -- --nocapture`.
+                println!(
+                    "legit_wc_output.stderr: {}rusty_wc_output.stderr: {}",
+                    String::from_utf8_lossy(&legit_wc_output.stderr),
+                    String::from_utf8_lossy(&rusty_wc_output.stderr),
+                );
+            }
+        }
     }
 }
